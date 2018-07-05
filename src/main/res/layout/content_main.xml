@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+
+    <com.esri.arcgisruntime.mapping.view.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.esri.arcgisruntime.mapping.view.MapView>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_bottom_bar"
+        android:visibility="invisible">
+    </com.github.mikephil.charting.charts.BarChart>
+
+    <ListView
+        android:id="@+id/chart2"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+    <Button
+        android:id="@+id/chart1chart2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:visibility="invisible"
+        android:textSize="15sp"
+        android:baselineAligned="false"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:textColor="@color/buttonPressOff"
+        android:drawableTop="@drawable/ic_arrow_forward"
+        android:padding="15dp" />
+
+    <Button
+        android:id="@+id/chart2chart1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:visibility="invisible"
+        android:textSize="15sp"
+        android:baselineAligned="false"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:textColor="@color/buttonPressOff"
+        android:drawableTop="@drawable/ic_arrow_back"
+        android:padding="15dp" />
+
+    <TextView
+        android:id="@+id/srtLayerBase"
+        android:visibility="invisible"
+        android:paddingTop="15dp"
+        android:paddingStart="15dp"
+        android:textColor="@color/infotext2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Базовые слои: " />
+
+    <ListView
+        android:id="@+id/layerListBase"
+        android:visibility="invisible"
+        android:paddingStart="15dp"
+        android:layout_below="@id/srtLayerBase"
+        android:choiceMode="multipleChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/srtOperatonalBas"
+        android:visibility="invisible"
+        android:paddingStart="15dp"
+        android:textColor="@color/infotext2"
+        android:layout_below="@id/layerListBase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Рабочие слои: " />
+
+    <ListView
+        android:id="@+id/layerListOperational"
+        android:visibility="invisible"
+        android:paddingStart="15dp"
+        android:layout_below="@id/srtOperatonalBas"
+        android:choiceMode="multipleChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" >
+    </ProgressBar>
+
+
+    <TextView
+        android:id="@+id/lastT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="200dp"
+        android:textColor="@color/infotext"
+        android:text="Карта загружается..." />
+
+    <TextView
+        android:id="@+id/Masstab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="400dp"
+        android:textColor="@color/infotext"
+        android:text="Масштаб" />
+
+    <TextView
+        android:id="@+id/coordanites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="380dp"
+        android:textColor="@color/infotext"
+        android:text="Координаты: " />
+
+    <TextView
+        android:id="@+id/averageT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"
+        android:textColor="@color/infotext"
+        android:text="Среднее" />
+
+    <TextView
+        android:id="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/infotext2"
+        android:visibility="invisible" />
+
+
+    <LinearLayout
+        android:id="@+id/layout_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/layoutBarColor"
+        android:adjustViewBounds="true"
+        android:layout_alignBottom="@id/mapView"
+        android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/hideChart"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="9sp"
+        android:baselineAligned="false"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:textColor="@color/buttonPressOff"
+        android:drawableTop="@drawable/ic_equalizer"
+        android:padding="5dp"
+        android:text="График" />
+
+    <Button
+        android:id="@+id/testTenP"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="9sp"
+        android:baselineAligned="false"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:textColor="@color/buttonPressOff"
+        android:drawableTop="@drawable/ic_ten"
+        android:padding="5dp"
+        android:text="N точек" />
+
+    <Button
+        android:id="@+id/testOneP"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="9sp"
+        android:baselineAligned="false"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:textColor="@color/buttonPressOff"
+        android:drawableTop="@drawable/ic_onepoint"
+        android:padding="5dp"
+        android:text="1 точка" />
+
+
+        <Button
+            android:id="@+id/layers"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="9sp"
+            android:baselineAligned="false"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:textColor="@color/buttonPressOff"
+            android:drawableTop="@drawable/ic_layers"
+            android:padding="5dp"
+            android:text="Слои" />
+
+    <Button
+        android:id="@+id/testFree"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="9sp"
+        android:baselineAligned="false"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:textColor="@color/buttonPressOff"
+        android:drawableTop="@drawable/ic_refresh"
+        android:padding="5dp"
+        android:text="Сброс" />
+
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/startTenP5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:textSize="9sp"
+        android:background="@color/layoutBarColor"
+        android:layout_marginBottom="15dp"
+        android:layout_above="@id/layout_bottom_bar"
+        android:layout_alignEnd="@id/layout_bottom_bar"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:textColor="@color/buttonPressOff"
+        android:drawableTop="@drawable/ic_title_black"
+        android:text="T" />
+
+    <Button
+        android:id="@+id/deletePoints5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:textSize="9sp"
+        android:background="@color/layoutBarColor"
+        android:layout_alignEnd="@id/startTenP"
+        android:layout_above="@id/startTenP"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:textColor="@color/buttonPressOff"
+        android:drawableTop="@drawable/ic_deletepoints"
+        android:text="D" />
+
+    <TextView
+        android:id="@+id/prosto5555"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/infotext"
+        android:text="Карта загружается..." />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/startTenP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_above="@id/layout_bottom_bar"
+        android:layout_alignEnd="@id/layout_bottom_bar"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_crop_ten"
+        app:rippleColor="@color/buttonPressOn"
+        app:fabSize="mini"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:backgroundTint="@color/layoutBarColor" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/deletePoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_above="@id/startTenP"
+        android:layout_alignEnd="@id/startTenP"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/ic_deletepoints"
+        app:rippleColor="@color/buttonPressOn"
+        app:fabSize="mini"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:backgroundTint="@color/layoutBarColor" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/removeLastPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_above="@id/layout_bottom_bar"
+        android:layout_toStartOf="@id/startTenP"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="@dimen/fab_margin"
+        app:rippleColor="@color/buttonPressOn"
+        android:layout_marginStart="5dp"
+        android:src="@drawable/ic_remove"
+        app:fabSize="mini"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:backgroundTint="@color/layoutBarColor" />
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

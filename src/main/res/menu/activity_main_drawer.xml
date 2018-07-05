@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/file_map"
+            android:icon="@drawable/ic_menu_filemap"
+            android:title="Загрузить карту" />
+        <item
+            android:id="@+id/map_info"
+            android:icon="@drawable/ic_menu_info"
+            android:title="Детали карты" />
+        <item
+            android:id="@+id/basemap"
+            android:icon="@drawable/ic_map_black"
+            android:title="Базовая карта" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_chart"
+            android:title="График" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_about"
+            android:title="О приложении" />
+    </group>
+
+    <item android:title="Вход через">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="ArcGIS Online" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="ArcGIS Enterprise" />
+        </menu>
+    </item>
+
+</menu>
